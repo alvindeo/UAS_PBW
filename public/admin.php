@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "koneksi.php";  
 
 // Cek apakah pengguna sudah login sebagai admin
 if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin') {
@@ -14,7 +15,7 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Dashbord Admin</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
@@ -88,7 +89,21 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin') {
                         <a class="nav-link" href="edit_article.php">Article</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Logout</a>
+                        <a class="nav-link" href="gallery.php">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profil.php">Homepage</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Admin
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                            <li><a class="dropdown-item" href="../index.php">Profil</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -224,8 +239,13 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin') {
     </section>
     <!-- End Content -->
 
-    <footer class="text-center py-4 color-dark">
-        <a href="https://github.com/alvindeo" class="text-dark">Alvin Deo Ardiansyah &copy; 2024</a>
+    <footer class="text-center py-4 mt-5" style="box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);">
+        <div class="container">
+            <a href="https://github.com/alvindeo"><i class="bi bi-github h5 p-1"></i></a>
+            <a href="https://www.instagram.com/alvndeoo/"><i class="bi bi-instagram h5 p-1"></i></a>
+            <a href="https://wa.me/+6285174455921"><i class="bi bi-whatsapp h5 p-1"></i></a>
+            <p class="mb-0">Alvin Deo Ardiansyah &copy; 2024</p>
+        </div>
     </footer>
 
     <!-- Theme Switcher -->
