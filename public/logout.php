@@ -6,27 +6,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
+    // Persiapkan query untuk menghindari SQL Injection
     $stmt = $conn->prepare("SELECT username, password FROM user WHERE username=?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $hasil = $stmt->get_result();
     $row = $hasil->fetch_assoc();
 
-    var_dump($row);
+    if (!empty($row)) {
+        // Jika password di database menggunakan MD5
+        if (md5($password) === $row['password']) {
+            $_SESSION['username'] = $row['username'];
+            if ($row['username'] == 'admin') {
+                header("Location: admin.php");
+            } else {
+                header("Location: login.php"); // Ubah sesuai halaman untuk pengguna non-admin
+            }
+            exit();
+        } else {
+            $error_message = "Password salah!";
+        }
+    } else {
+        $error_message = "Username tidak ditemukan!";
+    }
 
-    if (!empty($row) && $row['username'] == 'admin') {
-        $_SESSION['username'] = $row['username'];
-        header("location:admin.php");
-      } elseif (!empty($row)) {
-        $_SESSION['username'] = $row['username'];
-        header("location:index.php");
-      } else {
-        header("location:login.php");
-      }
     $stmt->close();
     $conn->close();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
