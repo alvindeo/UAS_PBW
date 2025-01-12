@@ -128,7 +128,7 @@ if (isset($_GET['delete'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Articles</title>
+    <title>Dashbord Admin</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
@@ -142,8 +142,51 @@ if (isset($_GET['delete'])) {
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
     .nav-item {
         margin: 10px;
+    }
+
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .logout-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    /* Dark mode styles */
+    body[data-bs-theme='dark'] {
+        background-color: #121212;
+        color: #ffffff;
+    }
+
+    body[data-bs-theme='dark'] .navbar {
+        background-color: #1f1f1f;
+    }
+
+    body[data-bs-theme='dark'] .card {
+        background-color: #1f1f1f;
+        color: #ffffff;
+    }
+
+    body[data-bs-theme='dark'] .nav-link {
+        color: #ffffff;
+    }
+
+    body[data-bs-theme='dark'] .dropdown-menu {
+        background-color: #1f1f1f;
+        color: #ffffff;
     }
     </style>
 </head>
@@ -164,10 +207,24 @@ if (isset($_GET['delete'])) {
                         <a class="nav-link" href="admin.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin.php">Article</a>
+                        <a class="nav-link" href="#">Article</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Logout</a>
+                        <a class="nav-link" href="gallery.php">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profil.php">Homepage</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Admin
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                            <li><a class="dropdown-item" href="../index.php">Profil</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -270,9 +327,10 @@ if (isset($_GET['delete'])) {
                         </thead>
 
                         <tbody>
-                            <?php while ($row = $result->fetch_assoc()): ?>
+                            <?php $no = 1; while ($row = $result->fetch_assoc()): ?>
                             <tr>
-                                <th scope="row"><?php echo $row['id']; ?></th>
+
+                                <td><?php echo $no++; ?></td>
                                 <td>
                                     <strong><?php echo $row['title']; ?></strong>
                                     <br> Pada: <?= $row['created_at']; ?>
