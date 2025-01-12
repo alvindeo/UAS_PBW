@@ -60,7 +60,7 @@
                         <a class="nav-link" href="#gallery">Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="public/login.php">Logout</a>
+                        <a class="nav-link" href="public/login.php">Login</a>
                     </li>
                 </ul>
             </div>
