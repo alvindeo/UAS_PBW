@@ -197,8 +197,13 @@
     </section>
 
     <!-- Footer -->
-    <footer class="text-center py-4 color-dark">
-        <a href="https://github.com/alvindeo" class="text-dark">Alvin Deo Ardiansyah &copy; 2024</a>
+    <footer class="text-center py-4 mt-5" style="box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);">
+        <div class="container">
+            <a href="https://github.com/alvindeo"><i class="bi bi-github h5 p-1"></i></a>
+            <a href="https://www.instagram.com/alvndeoo/"><i class="bi bi-instagram h5 p-1"></i></a>
+            <a href="https://wa.me/+6285174455921"><i class="bi bi-whatsapp h5 p-1"></i></a>
+            <p class="mb-0">Alvin Deo Ardiansyah &copy; 2024</p>
+        </div>
     </footer>
 
 
